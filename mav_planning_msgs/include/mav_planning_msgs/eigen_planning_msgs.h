@@ -40,6 +40,20 @@ struct EigenPolynomialSegment {
 
 typedef std::vector<EigenPolynomialSegment> EigenPolynomialTrajectory;
 
+struct EigenWayPoint {
+  EigenWayPoint():time(0.0), type(0) {};
+
+  Eigen::VectorXd x;
+  Eigen::VectorXd y;
+  Eigen::VectorXd z;
+  Eigen::VectorXd yaw;
+  double time;
+  int type;
+};
+
+typedef std::vector<EigenWayPoint> EigenWaypointArray;
+
+
 }
 
 #endif // MAV_PLANNING_MSGS_EIGEN_MAV_MSGS_H

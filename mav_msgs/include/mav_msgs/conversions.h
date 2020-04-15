@@ -34,6 +34,7 @@
 
 #include "mav_msgs/Actuators.h"
 #include "mav_msgs/AttitudeThrust.h"
+#include "mav_msgs/CommandTrajectory.h"
 #include "mav_msgs/RateThrust.h"
 #include "mav_msgs/RollPitchYawrateThrust.h"
 #include "mav_msgs/TorqueThrust.h"
@@ -575,6 +576,20 @@ inline void msgMultiDofJointTrajectoryFromEigen(
     const EigenTrajectoryPointDeque& trajectory,
     trajectory_msgs::MultiDOFJointTrajectory* msg) {
   msgMultiDofJointTrajectoryFromEigen(trajectory, "base_link", msg);
+}
+
+
+inline void eigenCommandTrajectoryFromMsg(const CommandTrajectory& msg,
+                                          EigenCommandTrajectory* command_trajectory) {
+  assert(command_trajectory != NULL);
+
+  command_trajectory->position = vector3FromMsg(msg.position);
+  command_trajectory->velocity = vector3FromMsg(msg.velocity);
+  command_trajectory->acceleration = vector3FromMsg(msg.acceleration);
+  command_trajectory->jerk = vector3FromMsg(msg.jerk);
+  command_trajectory->snap = vector3FromMsg(msg.snap);
+  command_trajectory->yaw = msg.yaw;
+  command_trajectory->yaw_rate = msg.yaw_rate;
 }
 
 }  // end namespace mav_msgs

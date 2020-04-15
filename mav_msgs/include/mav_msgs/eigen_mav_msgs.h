@@ -329,6 +329,41 @@ struct EigenOdometry {
   }
 };
 
+struct EigenCommandTrajectory {
+  EigenCommandTrajectory()
+      : position(0.0, 0.0, 0.0),
+        velocity(0.0, 0.0, 0.0),
+        acceleration(0.0, 0.0, 0.0),
+        jerk(0.0, 0.0, 0.0),
+        snap(0.0, 0.0, 0.0),
+        yaw(0.0),
+        yaw_rate(0.0) {};
+
+  EigenCommandTrajectory(const Eigen::Vector3d& _position,
+                         const Eigen::Vector3d& _velocity,
+                         const Eigen::Vector3d& _acceleration,
+                         const Eigen::Vector3d& _jerk,
+                         const Eigen::Vector3d& _snap,
+                         double _yaw,
+                         double _yaw_rate)
+      : position(_position),
+        velocity(_velocity),
+        acceleration(_acceleration),
+        jerk(_jerk),
+        snap(_snap),
+        yaw(_yaw),
+        yaw_rate(_yaw_rate) {};
+
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+  Eigen::Vector3d position;
+  Eigen::Vector3d velocity;
+  Eigen::Vector3d acceleration;
+  Eigen::Vector3d jerk;
+  Eigen::Vector3d snap;
+  double yaw;
+  double yaw_rate;
+};
+
 // TODO(helenol): replaced with aligned allocator headers from Simon.
 #define MAV_MSGS_CONCATENATE(x, y) x##y
 #define MAV_MSGS_CONCATENATE2(x, y) MAV_MSGS_CONCATENATE(x, y)
@@ -344,6 +379,7 @@ MAV_MSGS_MAKE_ALIGNED_CONTAINERS(EigenRateThrust)
 MAV_MSGS_MAKE_ALIGNED_CONTAINERS(EigenTrajectoryPoint)
 MAV_MSGS_MAKE_ALIGNED_CONTAINERS(EigenRollPitchYawrateThrust)
 MAV_MSGS_MAKE_ALIGNED_CONTAINERS(EigenOdometry)
+MAV_MSGS_MAKE_ALIGNED_CONTAINERS(EigenCommandTrajectory)
 }
 
 #endif  // MAV_MSGS_EIGEN_MAV_MSGS_H
