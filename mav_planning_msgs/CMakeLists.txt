@@ -26,6 +26,7 @@ add_message_files(
   PolynomialTrajectory.msg
   PolynomialSegment4D.msg
   PolynomialTrajectory4D.msg
+  WayPoint.msg
 )
 
 add_service_files(

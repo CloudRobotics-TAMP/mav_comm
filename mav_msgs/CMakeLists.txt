@@ -21,7 +21,11 @@ add_message_files(
   FILES
   Actuators.msg
   AttitudeThrust.msg
+  CommandAttitudeThrust.msg
+  CommandMotorSpeed.msg
+  CommandRollPitchYawrateThrust.msg
   CommandTrajectory.msg
+  MotorSpeed.msg
   RateThrust.msg
   RollPitchYawrateThrust.msg
   TorqueThrust.msg
